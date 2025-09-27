@@ -3,6 +3,7 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [main]
+
   pull_request: # remove fter testing
     branches: [main]
 
@@ -48,6 +49,7 @@ jobs:
       - name: Build application
         run: npm run build
         env:
+          # SvelteKit will see this variable and show STAGING badge
           PUBLIC_ENVIRONMENT: ${{ steps.env.outputs.environment }}
 
       - name: Setup Pages
